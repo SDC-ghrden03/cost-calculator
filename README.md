@@ -1,0 +1,1 @@
+initdb /usr/local/var/postgres -E utf8

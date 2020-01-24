@@ -1,0 +1,23 @@
+2020-01-23 12:10:27.453 MST [13889] LOG:  starting PostgreSQL 12.1 on x86_64-apple-darwin17.7.0, compiled by Apple LLVM version 10.0.0 (clang-1000.11.45.5), 64-bit
+2020-01-23 12:10:27.468 MST [13889] LOG:  listening on IPv6 address "::1", port 5432
+2020-01-23 12:10:27.468 MST [13889] LOG:  listening on IPv6 address "fe80::1%lo0", port 5432
+2020-01-23 12:10:27.468 MST [13889] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-01-23 12:10:27.469 MST [13889] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-01-23 12:10:27.508 MST [13890] LOG:  database system was shut down at 2020-01-23 12:09:00 MST
+2020-01-23 12:10:27.518 MST [13889] LOG:  database system is ready to accept connections
+2020-01-23 12:10:57.396 MST [13889] LOG:  received fast shutdown request
+2020-01-23 12:10:57.397 MST [13889] LOG:  aborting any active transactions
+2020-01-23 12:10:57.403 MST [13889] LOG:  background worker "logical replication launcher" (PID 13896) exited with exit code 1
+2020-01-23 12:10:57.403 MST [13891] LOG:  shutting down
+2020-01-23 12:10:57.413 MST [13889] LOG:  database system is shut down
+2020-01-24 10:22:42.202 MST [17020] LOG:  starting PostgreSQL 12.1 on x86_64-apple-darwin17.7.0, compiled by Apple LLVM version 10.0.0 (clang-1000.11.45.5), 64-bit
+2020-01-24 10:22:42.224 MST [17020] LOG:  listening on IPv6 address "::1", port 5432
+2020-01-24 10:22:42.224 MST [17020] LOG:  listening on IPv6 address "fe80::1%lo0", port 5432
+2020-01-24 10:22:42.224 MST [17020] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2020-01-24 10:22:42.227 MST [17020] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2020-01-24 10:22:42.272 MST [17021] LOG:  database system was shut down at 2020-01-23 12:10:57 MST
+2020-01-24 10:22:42.283 MST [17020] LOG:  database system is ready to accept connections
+2020-01-24 12:25:19.525 MST [19344] FATAL:  database "shannonhurley" does not exist
+2020-01-24 12:26:48.230 MST [19810] FATAL:  database "shannonhurley" does not exist
+2020-01-24 12:28:49.708 MST [20004] FATAL:  database "cost_calculator" does not exist
+2020-01-24 12:29:20.017 MST [20025] FATAL:  database "db" does not exist

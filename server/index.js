@@ -1,0 +1,18 @@
+//add this require to ensure .env file works
+require('dotenv').config();
+
+const express = require('express');
+const app = express();
+const carsRoutes = require('./routes/carsRoutes.js');
+const locationRoutes = require('./routes/locationRoutes.js');
+
+
+app.use(express.json())
+
+app.use(express.static('client/dist'))
+//if PORT exists in our enviornment, set PORT to our enviornment for us. else, set it to 3000
+app.use('/api/cars', carsRoutes);
+app.use('/api/location', locationRoutes)
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, ()=>{ console.log(`server running on PORT: ${PORT}`)})
