@@ -11,18 +11,20 @@ USE cost_calculator;
 CREATE TABLE location (
   id SERIAL PRIMARY KEY,
   zipcode INT NOT NULL,
-  credit_score DECIMAL(6,5) NOT NULL
+  taxes INT NOT NULL,
+  fees INT NOT NULL,
+  rate DECIMAL(6,5) NOT NULL
 );
 CREATE TABLE cars (
   id SERIAL PRIMARY KEY,
   cost INT NOT NULL
 );
 
-INSERT INTO location (zipcode, credit_score) VALUES ('60030', '.00400');
-INSERT INTO location (zipcode, credit_score) VALUES ('80030', '.00350');
-INSERT INTO location (zipcode, credit_score) VALUES ('80233', '.00425');
-INSERT INTO location (zipcode, credit_score) VALUES ('80012', '.00500');
-INSERT INTO location (zipcode, credit_score) VALUES ('50012', '1.00');
+INSERT INTO location (zipcode, taxes, fees, rate) VALUES ('60030', '1062', '233', '.00400');
+INSERT INTO location (zipcode, taxes, fees, rate) VALUES ('80030', '1000', '200', '.00350');
+INSERT INTO location (zipcode, taxes, fees, rate) VALUES ('80233', '902', '150', '.00425');
+INSERT INTO location (zipcode, taxes, fees, rate) VALUES ('80012', '981', '175', '.00500');
+INSERT INTO location (zipcode, taxes, fees, rate) VALUES ('50012', '1262', '250', '1.00');
 
 INSERT INTO cars (cost) VALUES ('10000');
 INSERT INTO cars (cost) VALUES ('11485');
