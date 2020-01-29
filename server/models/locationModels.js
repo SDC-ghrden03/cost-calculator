@@ -1,7 +1,7 @@
 const connection = require('../connections/costCalculatorConnections.js');
 
-const getZipcodes = (body, callback) => {
-    const queryText = `SELECT taxes, fees, rate FROM location WHERE zipcode = ${body.zipcode}`;
+const getZipcodes = (zipcode, callback) => {
+    const queryText = `SELECT taxes, fees, rate FROM location WHERE zipcode = ${zipcode}`;
     connection.query(queryText, (error, result, field)=>{
         if (error) {
             console.log(error)
