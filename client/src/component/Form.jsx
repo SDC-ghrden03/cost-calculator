@@ -25,23 +25,43 @@ class Form extends React.Component {
     this.showTaxesAndFees = this.showTaxesAndFees.bind(this);
     this.showCalculateTaxesAndFees = this.showCalculateTaxesAndFees.bind(this);
   }
-  hideAll () {
-    document.getElementById("calculateTaxesAndFees").style.display="none"
-    document.getElementById("taxesAndFees").style.display="none"
-    document.getElementById("calculateButton").style.display="block"
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (this.props.state.cost !== prevProps.state.cost) {
+      this.setState({cost:this.props.state.cost});
+      this.setMonthlyPayment()
+    }
   }
-  hideTaxesAndFees () {
+  componentDidMount() {
+    this.hideAll()
+  }
+  
+  hideAll () {
+    const calculateTaxesAndFees = document.getElementById("calculateTaxesAndFees")
+    const taxesAndFees = document.getElementById("taxesAndFees")
+    const calculateButton = document.getElementById("calculateButton")
+    if (calculateButton) {
+    calculateTaxesAndFees.style.display="none"
+    taxesAndFees.style.display="none"
+    calculateButton.style.display="block"
+    }
+  }
+  hideTaxesAndFees (event) {
+    event.preventDefault();
     document.getElementById("calculateTaxesAndFees").style.display="block"
     document.getElementById("taxesAndFees").style.display="none"
     document.getElementById("calculateButton").style.display="none"
   }
-  showCalculateTaxesAndFees() {
+  showCalculateTaxesAndFees(event) {
+    event.preventDefault();
     document.getElementById("calculateTaxesAndFees").style.display="block";
     document.getElementById("calculateButton").style.display="none"
   }
-  showTaxesAndFees() {
+  showTaxesAndFees(event) {
+    event.preventDefault();
     document.getElementById("taxesAndFees").style.display="block";
     document.getElementById("calculateButton").style.display="none"
+    document.getElementById("calculateTaxesAndFees").style.display="none";
   }
   changeRateEstimate (event) {
     const key = 'displayedRate';
@@ -61,13 +81,7 @@ class Form extends React.Component {
       myMonthlyPayment: payment
     })
   }
-  componentDidUpdate(prevProps) {
-    // Typical usage (don't forget to compare props):
-    if (this.props.state.cost !== prevProps.state.cost) {
-      this.setState({cost:this.props.state.cost});
-      this.setMonthlyPayment()
-    }
-  }
+  
   onFormChange (event) {
     const key = event.target.name;
     const value = event.target.value;
@@ -85,6 +99,7 @@ class Form extends React.Component {
       zipcode: zipcode,
       rateEstimate:this.props.state.rate
     }, ()=>{console.log('rate', this.state.rate)})
+    this.showTaxesAndFees(event)
   }
   clearZipcode() {
 
@@ -149,7 +164,8 @@ class Form extends React.Component {
         <label> Where Will This Vehicle Be Registered?
           <input id="zipcode" name="zipcode" value={this.state.zipcode} onChange={this.onFormChange} />
         </label>
-        <button onClick={this.hideAll}>Back</button><button onClick={this.enterZipcode} onClick={this.showTaxesAndFees}>Next</button>
+        <button onClick={this.hideAll}>Back</button>
+        <button onClick={this.enterZipcode} >Next</button>
       </form>
       <div id="taxesAndFees">
       <label> 
@@ -160,7 +176,8 @@ class Form extends React.Component {
         DMV Fees ${this.props.state.fees}
       </label>
       <br></br>
-      <button onClick={this.hideAll}>Remove</button><button onClick={this.hideTaxesAndFees}>Edit</button>
+      <button onClick={this.hideAll}>Remove</button>
+      <button onClick={this.hideTaxesAndFees}>Edit</button>
       </div>
       <label> 
       My Monthly Payment             ${this.state.myMonthlyPayment}/mo  
