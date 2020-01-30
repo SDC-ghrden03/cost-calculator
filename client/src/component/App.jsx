@@ -45,7 +45,7 @@ class App extends React.Component {
         return res.json()
     })
     .then((data)=>{
-      console.log('data',data)
+      console.log('zipcode data', data)
       this.setState({
             taxes: data.creditScore[0].taxes,
             fees: data.creditScore[0].fees,
@@ -58,7 +58,7 @@ class App extends React.Component {
   }
   componentDidMount() {
     this.getCost(1)
-    this.getZipcode(60030)
+    //this.getZipcode(60030)
   }
   render() {
     return (

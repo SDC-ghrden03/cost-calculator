@@ -81,6 +81,10 @@ class Form extends React.Component {
     let zipcode = document.getElementById("zipcode").value;
     console.log(zipcode)
     this.props.getZipcode(zipcode)
+    this.setState({
+      zipcode: zipcode,
+      rateEstimate:this.props.state.rate
+    }, ()=>{console.log('rate', this.state.rate)})
   }
   clearZipcode() {
 
@@ -92,7 +96,7 @@ class Form extends React.Component {
   render() {
     return (
       <div>
-      <form onSubmit={this.onFormSubmit}>
+      <form id="costCalculator" onSubmit={this.onFormSubmit}>
       <label> Cash Down
         <input name="cashDown" value={this.state.cashDown} onChange={this.onFormChange} />
       </label>
@@ -106,7 +110,7 @@ class Form extends React.Component {
         <input name="rateEstimate" value={this.state.displayedRate} readOnly/>
       </label>
       <label> Est. Credit Score
-      <select name="creditScore" className="credit-data" onChange={this.onFormChange} onChange={this.changeRateEstimate}>
+      <select name="creditScore" id="creditScore" onChange={this.onFormChange} onChange={this.changeRateEstimate}>
       <option value={1}>740-900</option>
       <option value={1.35}>700-739</option>
       <option value={1.5}>670-699</option>
@@ -115,7 +119,21 @@ class Form extends React.Component {
         </select>
       </label>
       <label> Term
-      <select name = "term" className="txn-data" onChange={this.onFormChange}>
+      <div className="radio-term" onChange={this.onFormChange}>
+    <input type="radio" id="24" value={24} name="term"></input>
+    <label htmlFor="24">24</label>
+    <input type="radio" id="36" value={36} name="term"></input>
+    <label htmlFor="36">36</label>
+    <input type="radio" id="48" value={48} name="term"></input>
+    <label htmlFor="48">48</label>
+    <input type="radio" id="60" value={60} name="term"></input>
+    <label htmlFor="60">60</label>
+    <input type="radio" id="72" value={72} name="term"></input>
+    <label htmlFor="72">72</label>
+    <input type="radio" id="84" value={84} name="term"></input>
+    <label htmlFor="84">84</label>
+      </div>
+      <select name = "term" size="6" onChange={this.onFormChange}>
       <option value={24}>24</option>
       <option value={36}>36</option>
       <option value={48}>48</option>
