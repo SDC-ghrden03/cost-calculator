@@ -5,6 +5,9 @@
 #calculateTaxesAndFees {
   display: "none";
 }
+#cashDownHoverText {
+  display: "none";
+}
 
 #creditScore {
   display: inline-block;

@@ -6,7 +6,7 @@ import renderer from "react-test-renderer";
 
 describe('App', ()=>{
   let wrapper = renderer.create(<App />)
-  fetch = jest.fn();
+  window.fetch = jest.fn();
   // beforeEach(()=>{
   //   wrapper = shallow(<App />)
   // })
