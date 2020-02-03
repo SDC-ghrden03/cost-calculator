@@ -42,15 +42,17 @@ class Form extends React.Component {
     this.taxesAndFeesMouseout = this.taxesAndFeesMouseout.bind(this);
     this.myMonthlyPaymentMouseover = this.myMonthlyPaymentMouseover.bind(this);
     this.myMonthlyPaymentMouseout = this.myMonthlyPaymentMouseout.bind(this);
+    this.hideInputError = this.hideInputError.bind(this);
+    this.showInputError = this.showInputError.bind(this);
   }
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (this.props.state.cost !== prevProps.state.cost) {
       this.setState({cost:this.props.state.cost});
-      this.setMonthlyPayment()
       this.setState({
-        displayedRate: this.state.rateEstimate * this.state.creditScore
-      })
+        displayedRate: this.state.rateEstimate * this.state.creditScore,
+        cashDown: this.props.state.cost * .1
+      }, ()=>{this.setMonthlyPayment()})
     }
   }
   componentDidMount() {
@@ -63,6 +65,7 @@ class Form extends React.Component {
     this.termMouseout();
     this.taxesAndFeesMouseout();
     this.myMonthlyPaymentMouseout();
+    this.hideInputError();
   }
   
   hideAll () {
@@ -92,6 +95,12 @@ class Form extends React.Component {
     document.getElementById("calculateButton").style.display="none"
     document.getElementById("calculateTaxesAndFees").style.display="none";
   }
+  hideInputError() {
+    document.getElementById("inputError").style.display="none"
+  }
+  showInputError() {
+    document.getElementById("inputError").style.display="block"
+  }
   changeRateEstimate (event) {
     const key = 'displayedRate';
     const value = event.target.value[0] * this.state.rateEstimate;
@@ -102,14 +111,38 @@ class Form extends React.Component {
     console.log('displayedRate', this.state.displayedRate)})
   }
   setMonthlyPayment () {
-    let n = this.state.term
-    let r = this.state.rateEstimate * this.state.creditScore * .01 / 12
-    let a = this.state.cost - this.state.cashDown - (this.state.tradeInValue - this.state.owed)
-    let d = (Math.pow(1+r, n) - 1) / (r * Math.pow(1+r, n))
-    let payment = Math.round(a / d)
-    this.setState({
-      myMonthlyPayment: payment
-    })
+    const carCost = Number(this.props.state.cost)
+    const cash = Number(this.state.cashDown)
+    const trade = Number(this.state.tradeInValue)
+    const owe = Number(this.state.owed)
+    const term = Number(this.state.term)
+    const rate = Number(this.state.rateEstimate)
+    const credit = Number(this.state.creditScore)
+    if (cash > carCost || trade > carCost || owe > 100000 || (cash + trade - owe) > carCost) {
+      this.showInputError()
+      if (this.state.cashDown > this.props.state.cost) {
+        console.log('cashdown too much')
+      }
+      if (this.state.tradeInValue > this.props.state.cost) {
+        console.log('trade in too much')
+      }
+      if (this.state.owed > 100000) {
+        console.log('owe too much')
+      }
+      this.setState({
+        myMonthlyPayment: '---'
+      })
+    } else {
+      this.hideInputError();
+      let n = term
+      let r = rate * credit * .01 / 12
+      let a = carCost - cash - (trade - owe)
+      let d = (Math.pow(1+r, n) - 1) / (r * Math.pow(1+r, n))
+      let payment = Math.round(a / d)
+      this.setState({
+        myMonthlyPayment: payment
+      })
+    }
   }
   onCreditChange (event) {
     const value1 = event.target.value.split(',')[0] * this.state.rateEstimate;
@@ -127,7 +160,7 @@ class Form extends React.Component {
     // //console.log('what is this:', this)
     this.setState({
       [key]:value
-    })
+    }, ()=>{this.setMonthlyPayment()})
   }
   enterZipcode(event) {
     event.preventDefault();
@@ -237,6 +270,9 @@ class Form extends React.Component {
         The lowest available monthy payment financing program offered for this vehicle based on rates from participating lenders in your area. This rate is for well qualified buyers only, actual rates may vary.
         </div>
       </label>
+      <div id="inputError">
+      No lender found, please enter your own rate
+      </div>
       <label> Est. Credit Score
       <select name="creditScore" id="creditScore" onChange={this.onCreditChange} >
       <option value="1,820">740-900</option>
@@ -272,7 +308,6 @@ class Form extends React.Component {
         The number of months over which payments will be payed.
         </div>
       </label>
-      <button>Test</button>
       </form>
       <label>Taxes and Fees
       <div onMouseOver={this.taxesAndFeesMouseover} onMouseOut={this.taxesAndFeesMouseout}>?</div>
