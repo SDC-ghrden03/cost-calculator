@@ -239,7 +239,7 @@ class Form extends React.Component {
       <div>
       <form id="costCalculator" onSubmit={this.onFormSubmit}>
       <label> Cash Down
-        <input name="cashDown" value={this.state.cashDown} onChange={this.onFormChange} />
+        <input type="number" name="cashDown" value={this.state.cashDown} onChange={this.onFormChange} />
         <div onMouseOver={this.cashDownMouseover} onMouseOut={this.cashDownMouseout}>?</div>
         <div id="cashDownHoverText">
         <label> Cash Down</label>
@@ -247,7 +247,7 @@ class Form extends React.Component {
         </div>
       </label>
       <label> My Trade-In Value
-        <input name="tradeInValue" value={this.state.tradeInValue} onChange={this.onFormChange}/>
+        <input type="number" name="tradeInValue" value={this.state.tradeInValue} onChange={this.onFormChange}/>
         <div onMouseOver={this.tradeInValueMouseover} onMouseOut={this.tradeInValueMouseout}>?</div>
         <div id="tradeInValueHoverText">
         <label> Trade-In Value </label>
@@ -255,7 +255,7 @@ class Form extends React.Component {
         </div>
       </label>
       <label> Owed On Trade
-        <input name="owed" value={this.state.owed} onChange={this.onFormChange}/>
+        <input type="number" name="owed" value={this.state.owed} onChange={this.onFormChange}/>
         <div onMouseOver={this.owedOnTradeMouseover} onMouseOut={this.owedOnTradeMouseout}>?</div>
         <div id="owedOnTradeHoverText">
         <label> Owed On Trade </label>
