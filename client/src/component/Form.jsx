@@ -156,17 +156,54 @@ class Form extends React.Component {
       this.showInputError()
       if (this.state.cashDown > this.props.state.cost) {
         console.log('cashdown too much')
+        document.getElementById("cashDown$").style.border="1px solid #e70404";
+        document.getElementById("cashDown$").style.color="#e70404";
+        document.getElementById("cashDown$").style.backgroundColor="#e4a2a2";
+        document.getElementById("cashDownInput").style.border="1px solid #e70404";
+        document.getElementById("cashDownInput").style.color="#e70404";
+        document.getElementById("cashDownTitle").style.color="#e70404";
+        
       }
       if (this.state.tradeInValue > this.props.state.cost) {
         console.log('trade in too much')
+        document.getElementById("trade$").style.border="1px solid #e70404";
+        document.getElementById("trade$").style.color="#e70404";
+        document.getElementById("trade$").style.backgroundColor="#e4a2a2";
+        document.getElementById("tradeInput").style.border="1px solid #e70404";
+        document.getElementById("tradeInput").style.color="#e70404";
+        document.getElementById("tradeTitle").style.color="#e70404";
+        
       }
       if (this.state.owed > 100000) {
         console.log('owe too much')
-      }
+        document.getElementById("owed$").style.border="1px solid #e70404";
+        document.getElementById("owed$").style.color="#e70404";
+        document.getElementById("owed$").style.backgroundColor="#e4a2a2";
+        document.getElementById("owedInput").style.border="1px solid #e70404";
+        document.getElementById("owedInput").style.color="#e70404";
+        document.getElementById("owedTitle").style.color="#e70404";
+      } 
       this.setState({
         myMonthlyPayment: '---'
       })
     } else {
+      document.getElementById("cashDown$").style.border="1px solid #dad9d4";
+      document.getElementById("cashDown$").style.color="#333d47";
+      document.getElementById("cashDown$").style.backgroundColor="#ffffff";
+      document.getElementById("trade$").style.border="1px solid #dad9d4";
+      document.getElementById("trade$").style.color="#333d47";
+      document.getElementById("trade$").style.backgroundColor="#ffffff";
+      document.getElementById("owed$").style.border="1px solid #dad9d4";
+      document.getElementById("owed$").style.color="#333d47";
+      document.getElementById("owed$").style.backgroundColor="#ffffff";
+      document.getElementById("cashDownInput").style.border="1px solid #dad9d4";
+      document.getElementById("cashDownInput").style.color="#333d47"; 
+      document.getElementById("tradeInput").style.border="1px solid #dad9d4";
+      document.getElementById("tradeInput").style.color="#333d47";
+      document.getElementById("owedInput").style.border="1px solid #dad9d4";
+      document.getElementById("owedInput").style.color="#333d47";       document.getElementById("cashDownTitle").style.color="#333d47";
+      document.getElementById("tradeTitle").style.color="#333d47";
+      document.getElementById("owedTitle").style.color="#333d47";
       this.hideInputError();
       let n = term
       let r = rate * credit * .01 / 12
@@ -284,9 +321,9 @@ class Form extends React.Component {
       <form id="costCalculator" onSubmit={this.onFormSubmit}>
       <div className="row">
 
-      <label className="titles"> Cash Down</label>
-      <input className="inputMoney" value="$" readOnly/>
-        <input className="inputs formInput" type="number" name="cashDown" value={this.state.cashDown} onChange={this.onFormChange} />
+      <label className="titles" id="cashDownTitle"> Cash Down</label>
+      <input className="inputMoney" id="cashDown$" value="$" readOnly/>
+        <input className="inputs formInput" id="cashDownInput" type="number" name="cashDown" value={this.state.cashDown} onChange={this.onFormChange} />
         <div className="helpHolder">
         <div className="help" onMouseOver={this.cashDownMouseover} onMouseOut={this.cashDownMouseout}>?
       <div className="helperText" id="cashDownHoverText">
@@ -299,11 +336,11 @@ class Form extends React.Component {
       </div>
       <br></br>
       <div className="row">
-      <label className="titles tradeIn"> My Trade-In Value &nbsp;
+      <label className="titles tradeIn" id="tradeTitle"> My Trade-In Value &nbsp;
       <i className="fas fa-calculator" style={{color:'green'}}>&nbsp;</i>
        </label>
-        <input className="inputMoney" value="$" readOnly/>
-      <input className="inputs formInput" type="number" name="tradeInValue" value={this.state.tradeInValue} onChange={this.onFormChange}/>
+        <input className="inputMoney" id="trade$" value="$" readOnly/>
+      <input className="inputs formInput" id="tradeInput" type="number" name="tradeInValue" value={this.state.tradeInValue} onChange={this.onFormChange}/>
       <div className="helpHolder">
       <div className="help" onMouseOver={this.tradeInValueMouseover} onMouseOut={this.tradeInValueMouseout}>?
         <div className="helperText" id="tradeInValueHoverText">
@@ -315,10 +352,10 @@ class Form extends React.Component {
       </div>
       <br></br>
       <div className="row">
-      <label className="titles"> Owed On Trade</label>
+      <label className="titles" id="owedTitle"> Owed On Trade</label>
       
-      <input className="inputMoney" value="$" readOnly/>
-        <input className="inputs formInput" type="number" name="owed" value={this.state.owed} onChange={this.onFormChange}/>
+      <input className="inputMoney" id="owed$" value="$" readOnly/>
+        <input className="inputs formInput" id="owedInput" type="number" name="owed" value={this.state.owed} onChange={this.onFormChange}/>
         <div className="helpHolder">
         <div className="help" onMouseOver={this.owedOnTradeMouseover} onMouseOut={this.owedOnTradeMouseout}>?
       <div className="helperText" id="owedOnTradeHoverText">
@@ -353,7 +390,7 @@ class Form extends React.Component {
         <button onClick={this.hideOwnRate}>Use estimated Rate</button>
       </div>
       <br></br>
-      <div id="inputError">
+      <div id="inputError" style={{color:"#e70404"}}>
       No lender found, please enter your own rate
       <br></br>
       </div>
