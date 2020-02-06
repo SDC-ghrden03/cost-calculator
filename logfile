@@ -21,3 +21,7 @@
 2020-01-24 12:26:48.230 MST [19810] FATAL:  database "shannonhurley" does not exist
 2020-01-24 12:28:49.708 MST [20004] FATAL:  database "cost_calculator" does not exist
 2020-01-24 12:29:20.017 MST [20025] FATAL:  database "db" does not exist
+2020-02-05 18:06:07.455 MST [17020] LOG:  received smart shutdown request
+2020-02-05 18:06:07.463 MST [17020] LOG:  background worker "logical replication launcher" (PID 17027) exited with exit code 1
+2020-02-05 18:06:07.463 MST [17022] LOG:  shutting down
+2020-02-05 18:06:07.485 MST [17020] LOG:  database system is shut down
