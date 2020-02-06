@@ -15,7 +15,7 @@ export class App extends React.Component {
     this.getZipcode = this.getZipcode.bind(this);
   }
   getCost (id = 1) {
-    fetch(`http://localhost:4000/api/cars/${id}`)
+    fetch(`http://localhost:3002/api/cars/${id}`)
     .then((res) => {
       return res.json()
   })
@@ -30,7 +30,7 @@ export class App extends React.Component {
   })
   }
   getZipcode (zipcode = 60030) {
-      fetch(`http://localhost:4000/api/location/${zipcode}`, {
+      fetch(`http://localhost:3002/api/location/${zipcode}`, {
         headers: {
           'Content-Type': 'application/json'
         },  

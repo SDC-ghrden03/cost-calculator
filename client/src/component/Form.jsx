@@ -49,6 +49,12 @@ class Form extends React.Component {
     this.showLoan = this.showLoan.bind(this);
     this.hideOwnRate = this.hideOwnRate.bind(this);
     this.showOwnRate = this.showOwnRate.bind(this);
+    this.redCash = this.redCash.bind(this);
+    this.resetCash = this.resetCash.bind(this);
+    this.redTrade = this.redTrade.bind(this);
+    this.resetTrade = this.resetTrade.bind(this);
+    this.redOwed = this.redOwed.bind(this);
+    this.resetOwed = this.resetOwed.bind(this);
   }
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
@@ -131,6 +137,54 @@ class Form extends React.Component {
     document.getElementById("ownRate").style.display="block"
     document.getElementById("rate").style.display="none"
   }
+  redCash () {
+    document.getElementById("cashDown$").style.border="1px solid #e70404";
+    document.getElementById("cashDown$").style.color="#e70404";
+    document.getElementById("cashDown$").style.backgroundColor="#e4a2a2";
+    document.getElementById("cashDownInput").style.border="1px solid #e70404";
+    document.getElementById("cashDownInput").style.color="#e70404";
+    document.getElementById("cashDownTitle").style.color="#e70404";
+  }
+  resetCash () {
+    document.getElementById("cashDown$").style.border="1px solid #dad9d4";
+    document.getElementById("cashDown$").style.color="#333d47";
+    document.getElementById("cashDown$").style.backgroundColor="#ffffff";
+    document.getElementById("cashDownInput").style.border="1px solid #dad9d4";
+    document.getElementById("cashDownInput").style.color="#333d47"; 
+    document.getElementById("cashDownTitle").style.color="#333d47";
+  }
+  redTrade () {
+    document.getElementById("trade$").style.border="1px solid #e70404";
+    document.getElementById("trade$").style.color="#e70404";
+    document.getElementById("trade$").style.backgroundColor="#e4a2a2";
+    document.getElementById("tradeInput").style.border="1px solid #e70404";
+    document.getElementById("tradeInput").style.color="#e70404";
+    document.getElementById("tradeTitle").style.color="#e70404";
+  }
+  resetTrade () {
+    document.getElementById("trade$").style.border="1px solid #dad9d4";
+    document.getElementById("trade$").style.color="#333d47";
+    document.getElementById("trade$").style.backgroundColor="#ffffff";
+    document.getElementById("tradeInput").style.border="1px solid #dad9d4";
+    document.getElementById("tradeInput").style.color="#333d47"; 
+    document.getElementById("tradeTitle").style.color="#333d47";
+  }
+  redOwed () {
+    document.getElementById("owed$").style.border="1px solid #e70404";
+    document.getElementById("owed$").style.color="#e70404";
+    document.getElementById("owed$").style.backgroundColor="#e4a2a2";
+    document.getElementById("owedInput").style.border="1px solid #e70404";
+    document.getElementById("owedInput").style.color="#e70404";
+    document.getElementById("owedTitle").style.color="#e70404";
+  }
+  resetOwed () {
+    document.getElementById("owed$").style.border="1px solid #dad9d4";
+    document.getElementById("owed$").style.color="#333d47";
+    document.getElementById("owed$").style.backgroundColor="#ffffff";
+    document.getElementById("owedInput").style.border="1px solid #dad9d4";
+    document.getElementById("owedInput").style.color="#333d47"; 
+    document.getElementById("owedTitle").style.color="#333d47";
+  }
   // changeRateEstimate (event) {
   //   const key = 'displayedRate';
   //   const value = this.state.creditScore * this.state.rateEstimate;
@@ -156,54 +210,42 @@ class Form extends React.Component {
       this.showInputError()
       if (this.state.cashDown > this.props.state.cost) {
         console.log('cashdown too much')
-        document.getElementById("cashDown$").style.border="1px solid #e70404";
-        document.getElementById("cashDown$").style.color="#e70404";
-        document.getElementById("cashDown$").style.backgroundColor="#e4a2a2";
-        document.getElementById("cashDownInput").style.border="1px solid #e70404";
-        document.getElementById("cashDownInput").style.color="#e70404";
-        document.getElementById("cashDownTitle").style.color="#e70404";
-        
+        this.redCash()
+        if (!(this.state.tradeInValue > this.props.state.cost)) {
+          this.resetTrade()
+        }
+        if (!(this.state.owed > 100000)) {
+          this.resetOwed()
+        }
       }
       if (this.state.tradeInValue > this.props.state.cost) {
         console.log('trade in too much')
-        document.getElementById("trade$").style.border="1px solid #e70404";
-        document.getElementById("trade$").style.color="#e70404";
-        document.getElementById("trade$").style.backgroundColor="#e4a2a2";
-        document.getElementById("tradeInput").style.border="1px solid #e70404";
-        document.getElementById("tradeInput").style.color="#e70404";
-        document.getElementById("tradeTitle").style.color="#e70404";
-        
+        this.redTrade()
+        if (!(this.state.cashDown > this.props.state.cost)) {
+        this.resetCash()
+        }
+        if (!(this.state.owed > 100000)) {
+          this.resetOwed()
+        }
       }
       if (this.state.owed > 100000) {
         console.log('owe too much')
-        document.getElementById("owed$").style.border="1px solid #e70404";
-        document.getElementById("owed$").style.color="#e70404";
-        document.getElementById("owed$").style.backgroundColor="#e4a2a2";
-        document.getElementById("owedInput").style.border="1px solid #e70404";
-        document.getElementById("owedInput").style.color="#e70404";
-        document.getElementById("owedTitle").style.color="#e70404";
+        this.redOwed()
+        if (!(this.state.cashDown > this.props.state.cost)) {
+          this.resetCash()
+        }
+        if (!(this.state.tradeInValue > this.props.state.cost)) {
+          this.resetTrade()
+        }
+
       } 
       this.setState({
         myMonthlyPayment: '---'
       })
     } else {
-      document.getElementById("cashDown$").style.border="1px solid #dad9d4";
-      document.getElementById("cashDown$").style.color="#333d47";
-      document.getElementById("cashDown$").style.backgroundColor="#ffffff";
-      document.getElementById("trade$").style.border="1px solid #dad9d4";
-      document.getElementById("trade$").style.color="#333d47";
-      document.getElementById("trade$").style.backgroundColor="#ffffff";
-      document.getElementById("owed$").style.border="1px solid #dad9d4";
-      document.getElementById("owed$").style.color="#333d47";
-      document.getElementById("owed$").style.backgroundColor="#ffffff";
-      document.getElementById("cashDownInput").style.border="1px solid #dad9d4";
-      document.getElementById("cashDownInput").style.color="#333d47"; 
-      document.getElementById("tradeInput").style.border="1px solid #dad9d4";
-      document.getElementById("tradeInput").style.color="#333d47";
-      document.getElementById("owedInput").style.border="1px solid #dad9d4";
-      document.getElementById("owedInput").style.color="#333d47";       document.getElementById("cashDownTitle").style.color="#333d47";
-      document.getElementById("tradeTitle").style.color="#333d47";
-      document.getElementById("owedTitle").style.color="#333d47";
+      this.resetCash();
+      this.resetTrade();
+      this.resetOwed();
       this.hideInputError();
       let n = term
       let r = rate * credit * .01 / 12
