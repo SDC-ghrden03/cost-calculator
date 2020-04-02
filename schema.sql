@@ -15,6 +15,7 @@ CREATE TABLE location (
   fees INT NOT NULL,
   rate DECIMAL(6,5) NOT NULL
 );
+
 CREATE TABLE cars (
   id SERIAL PRIMARY KEY,
   cost INT NOT NULL
