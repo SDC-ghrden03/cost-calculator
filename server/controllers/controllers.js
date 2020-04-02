@@ -1,8 +1,4 @@
-const model = require('../models/locationModels.js');
-const model = require('../models/carsModels.js');
-
-
-
+const model = require('../models/models.js');
 
 
 

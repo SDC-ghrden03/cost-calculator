@@ -1,6 +1,4 @@
 const connection = require('../connections/costCalculatorConnections.js');
-const connection = require('../connections/costCalculatorConnections.js');
-
 
 
 
