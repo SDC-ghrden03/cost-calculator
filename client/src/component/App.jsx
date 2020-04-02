@@ -1,5 +1,5 @@
 import React from 'react';
-import Form from './Form.jsx'
+import Form from './Form.jsx';
 
 
 export class App extends React.Component {
@@ -18,16 +18,16 @@ export class App extends React.Component {
     fetch(`http://localhost:3002/api/cars/${id}`)
     .then((res) => {
       return res.json()
-  })
-  .then((data)=>{
-    console.log('data',data)
-    this.setState({
-          cost:data.car[0].cost
     })
-  })
-  .catch(err =>{
-      console.log(err)
-  })
+    .then((data)=>{
+      console.log('data',data)
+      this.setState({
+            cost:data.car[0].cost
+      })
+    })
+    .catch(err =>{
+        console.log(err)
+    })
   }
   getZipcode (zipcode = 60030) {
       fetch(`http://localhost:3002/api/location/${zipcode}`, {
@@ -51,10 +51,12 @@ export class App extends React.Component {
         console.log(err)
     })
   }
+
   componentDidMount() {
     this.getCost(1)
     //this.getZipcode(60030)
   }
+
   render() {
     return (
       <div>
@@ -65,4 +67,4 @@ export class App extends React.Component {
 }
 
 
-//export default App;
+export default App;

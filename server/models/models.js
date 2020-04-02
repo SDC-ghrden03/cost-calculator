@@ -18,37 +18,61 @@ const getZipCodes = (zip) => {
 
 
 
-const readCarPrice = () => { 
+ const readCarPrice = (car) => { 
     return new Promise ((resolve, reject) => {
-        const queryText = `SELECT cost FROM cars WHERE id = ${id}`; 
+        const queryText = `SELECT cost FROM cars WHERE id = ${car}`; 
         connection.query(queryText, (err, results, fields) => {
             if (err) {
             reject(err);
             } else {
             resolve(results);  
         }
-      })
+      });
     });
-  }
+  };
 
 
+  const addZipCode = (newCode) => { 
+    return new Promise ((resolve, reject) => {
+        const queryText = `INSERT INTO location(zipcode) VALUES(${newCode})`; 
+        connection.query(queryText, (err, results, fields) => {
+            if (err) {
+            reject(err);
+            } else {
+            resolve(results);  
+        }
+      });
+    });
+  };
 
 
+  const addNewCar = (newcar) => { 
+    return new Promise ((resolve, reject) => {
+        const queryText = `INSERT INTO location(zipcode) VALUES(${newCar})`; 
+        connection.query(queryText, (err, results, fields) => {
+            if (err) {
+            reject(err);
+            } else {
+            resolve(results);  
+        }
+      });
+    });
+  };
 
 
-
-// const readCarPrice = (id, callback) => {
-//     const queryText = `SELECT cost FROM cars WHERE id = ${id}`;
-//     connection.query(queryText, (error, result, field) => {
-//         if (error) {
-//             console.log(error)
-//             callback(error)
-//         } else {
-//             //error first... dont forget.
-//             callback(null, result)
+//   const readCarPrice = (car) => { 
+//     return new Promise ((resolve, reject) => {
+//         const queryText = `SELECT cost FROM cars WHERE id = ${car}`; 
+//         connection.query(queryText, (err, results, fields) => {
+//             if (err) {
+//             reject(err);
+//             } else {
+//             resolve(results);  
 //         }
-//     })
-// }
+//       });
+//     });
+//   };
+
 
 
 
@@ -57,5 +81,7 @@ const readCarPrice = () => {
 
 module.exports = {
     getZipCodes,
-    readCarPrice   
+    readCarPrice, 
+    addZipCode,
+    addNewCar   
 }

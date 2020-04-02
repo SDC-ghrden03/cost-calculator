@@ -20,20 +20,7 @@ const getZipCode = (req, res) => {
 
 
 
-
-// const getCars = (req, res, next) => {
-//   console.log('params for car', req.params)
-//   model.readCarPrice(req.params.id, (error, result) => {
-//     if (error) {
-//       console.log(error)
-//       res.status(400).send(error)
-//     } else {
-//       res.status(200).json({ car:result })
-//     }
-//   })
-// }
-
-const getCars = () => {
+const getCars = (req, res) => {
   const car = req.params.id; 
   model.readCarPrice(car);
   then(results => {
@@ -49,8 +36,60 @@ const getCars = () => {
 
 
 
+const addZipCode = (req, res) => {
+  const newCode = req.params.zipcode;
+  model.addZipCode(newCode)
+  .then(results => {
+    res.status(200).send("New ZipCode Successfully added!")
+  })
+  .catch(err => {
+    res.status(400).json({
+      message:'Failed to add ZipCode!!',
+      err: err
+    })
+  })
+}
+
+
+
+const updateCars = (req, res) => {
+  const newCar = req.params.newCar; 
+  model.addNewCar(newCar)
+  .then(results => {
+    res.status(200).send('New Car Successfully added!');
+  })
+  .catch(err => {
+    res.status(400).json({
+      message:"Failed to add new Car!!",
+      err: err
+    })
+  })
+}
+
+
+
+const deleteCars = (req, res) => {
+  const removeCar = req.params.removeCar; 
+  model.deleteCars(removeCar)
+  .then(results => {
+    res.status(200).send('Car successfuly Removed!')
+  })
+  .catch(err => {
+    res.status(400).json({
+      message: "Failed to delete Car!!",
+      err: err
+    })
+  })
+}
+
+
+
+
 
 module.exports = {
     getZipCode,
-    getCars
+    getCars, 
+    addZipCode, 
+    updateCars, 
+    deleteCars
 }
