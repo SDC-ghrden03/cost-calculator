@@ -15,12 +15,12 @@ router.get('/:id', controller.getCars);
 router.post('/create', controller.addZipCode);
 
 
-// //Route to Update
-// router.put('/:id/update', controller.updateCars);
+//Route to Update
+router.put('/:id/update', controller.updateCars);
 
 
-// //Route to Delete
-// router.delete('/:id/delete', controller.deleteCars);
+//Route to Delete
+router.delete('/:id/delete', controller.deleteCars);
 
 
 
