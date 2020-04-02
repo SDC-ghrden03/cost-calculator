@@ -4,7 +4,7 @@ const controller = require('../controllers/controllers.js');
 
 
 
-router.get('/:zipcode', controller.getZipcode)
+router.get('/:zipcode', controller.getZipCode)
 router.get('/:id', controller.getCars);
 
 
