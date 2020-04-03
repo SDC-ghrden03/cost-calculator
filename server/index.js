@@ -3,7 +3,7 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
-const locationRoutes = require('./routes/routes.js');
+const Routes = require('./routes/routes.js');
 const cors = require('cors');
 
 
@@ -15,8 +15,14 @@ app.use(express.static('client/dist'))
 
 
 
-app.use('/api/cars', locationRoutes);
-app.use('/api/location', locationRoutes)
+app.use('/api/cars', Routes);
+app.use('/api/location', Routes)
+app.use('/api/crud', Routes)
+
+
+
+
+
 const PORT = process.env.PORT || 3002;
 
 app.listen(PORT, ()=>{ console.log(`server running on PORT: ${PORT}`)})
