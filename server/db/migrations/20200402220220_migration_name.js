@@ -5,7 +5,7 @@ exports.up = async function(knex) {
         table.increments('id').primary();
         table.integer('price').notNullable();
      })
-
+     
 };
 
 exports.down = async function(knex) {
