@@ -27,12 +27,19 @@ const fakeLocationsBatch = (num) => {
 }
 
 
-const seedLocationsBatches = (num) => {
-  const seedBatches = fakeLocationsBatch(1000);
-  addManyLocations(seedBatches);
-}
+const seedLocationsBatches = async (num) => {
+  var count = 0; 
+  while (count < num) {
+  const seedBatches = fakeLocationsBatch(10000);
+  await addManyLocations(seedBatches);
+  count++
+  }
+};
 
-seedLocationsBatches(1);
+
+seedLocationsBatches(1000);
+
+
 
 
 

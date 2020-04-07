@@ -31,7 +31,7 @@ const eachLocation = mongoose.model('eachLocation', locations)
 
 
 
-const addManyLocations = (locationsBatch) => {
+const addManyLocations = async (locationsBatch) => {
   return new Promise((resolve, reject) => {
     eachLocation.collection.insertMany(locationsBatch, (err, docs) => {
       if (err) {
