@@ -1,21 +1,82 @@
 
-const Pool = require('pg').Pool; 
-require('dotenv').config()
+const mongoose = require('mongoose');
 
 
-
-const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: 'cost_calculator',
-  password: process.env.DB_PASS,
-  port: 5432
+mongoose.connect('mongodb://localhost/price_information', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
 });
 
 
+var db = mongoose.connection; 
+
+db.on('error', console.error.bind(console, 'connectoin error:'));
+db.once('open', function() {
+  console.log('we are connected yo!');
+})
 
 
-module.exports = pool;
+const Schema = mongoose.Schema;
+
+
+const locations = new Schema ({
+  city: String, 
+  zip: Number,
+  interest: Number,
+  cost: Number
+})
+
+
+const eachLocation = mongoose.model('eachLocation', locations) 
+
+
+
+const addManyLocations = (locationsBatch) => {
+  return new Promise((resolve, reject) => {
+    eachLocation.collection.insertMany(locationsBatch, (err, docs) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(docs.length)
+      }
+    })
+  })
+};
+
+
+
+const addOneLocation = (location) => {
+  var newLocation = new eachLocation(location);
+  return new Promise((reject, resolve) => {
+    newLocation.save((err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(newLocation);
+      }
+    })
+  })
+};
+
+
+const getOneLocation = () => {
+  return new Promise((reject, resolve) => {
+    eachLocation.find((err, eachLocation) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(eachLocation);
+      }
+    })
+  })
+}
+
+
+module.exports = {
+  addManyLocations, 
+  addOneLocation, 
+  getOneLocation
+}
 
 
 
@@ -26,9 +87,23 @@ module.exports = pool;
 
 
 
+// const Pool = require('pg').Pool; 
+// require('dotenv').config()
 
 
 
+// const pool = new Pool({
+//   user: process.env.DB_USER,
+//   host: process.env.DB_HOST,
+//   database: 'cost_calculator',
+//   password: process.env.DB_PASS,
+//   port: 5432
+// });
+
+
+
+
+// module.exports = pool;
 
 
 

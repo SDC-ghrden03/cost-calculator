@@ -13,6 +13,7 @@
     "faker": "^4.1.0",
     "knex": "^0.20.13",
     "mongodb": "^3.5.5",
+    "mongoose": "^5.9.7",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.2",
     "pg": "^8.0.0",
@@ -46,7 +47,8 @@
   "scripts": {
     "test": "jest",
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/index.js"
+    "start": "nodemon server/index.js",
+    "mongoSeed": "node ./seeds/mongoSeeds.js"
   },
   "repository": {
     "type": "git",
