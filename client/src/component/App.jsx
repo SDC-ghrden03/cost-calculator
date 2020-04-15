@@ -14,7 +14,7 @@ export class App extends React.Component {
     this.getCost = this.getCost.bind(this);
     this.getZipcode = this.getZipcode.bind(this);
   }
-  getCost (id = 1) {
+  getCost (id = "5e8ccc64d7c6db7b21d9013e") {
     fetch(`http://localhost:3002/api/cars/${id}`)
     .then((res) => {
       return res.json()

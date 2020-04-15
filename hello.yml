@@ -1,0 +1,16 @@
+config:
+  target: 'http://localhost:3002'
+  phases:
+    - duration: 60
+      arrivalRate: 20
+  defaults:
+    headers:
+      x-my-service-auth: '987401838271002188298567'
+  variables:
+    zipcodes:
+      - ["80204", "89820", "76548", "80214"]
+scenarios:
+  - flow:
+    - loop:
+      - get:
+          url: "/api/location/{{ $loopElement }}"

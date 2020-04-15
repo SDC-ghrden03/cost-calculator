@@ -2,7 +2,6 @@ const faker = require('faker');
 
 
 
-
 const createCost = () => {
   var fakeCosts = [];
   while (fakeCosts.length < 10000) {
@@ -15,7 +14,6 @@ const createCost = () => {
   }
   return fakeCosts; 
 };
-
 
 
 exports.seed = async function(knex) {

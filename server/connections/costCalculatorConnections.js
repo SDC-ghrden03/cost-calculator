@@ -1,20 +1,38 @@
 
-const Pool = require('pg').Pool; 
+const mongoose = require('mongoose');
 
 
-
-const pool = new Pool({
-  user: 'dev',
-  host: 'localhost',
-  database: 'cost_calculator',
-  password: 'devOps',
-  port: 5432
+mongoose.connect('mongodb://database/price_information', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true 
 });
 
 
+var db = mongoose.connection; 
+
+db.on('error', console.error.bind(console, 'connectoin error:'));
+db.once('open', function() {
+  console.log('we are connected yo!');
+})
 
 
-module.exports = pool;
+const Schema = mongoose.Schema;
+
+
+const locations = new Schema ({
+  city: String, 
+  zip: Number,
+  interest: Number,
+  cost: Number
+})
+
+
+const eachLocation = mongoose.model('eachLocation', locations); 
+
+
+
+
+module.exports = eachLocation;
 
 
 
@@ -25,9 +43,23 @@ module.exports = pool;
 
 
 
+// const Pool = require('pg').Pool; 
+// require('dotenv').config()
 
 
 
+// const pool = new Pool({
+//   user: process.env.DB_USER,
+//   host: process.env.DB_HOST,
+//   database: 'cost_calculator',
+//   password: process.env.DB_PASS,
+//   port: 5432
+// });
+
+
+
+
+// module.exports = pool;
 
 
 

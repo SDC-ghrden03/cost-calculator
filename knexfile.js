@@ -4,7 +4,7 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: {user: 'dev', password: 'devOps', database: 'cost_calculator'},
+    connection: {user:process.env.DB_USER, password: process.env.DB_PASS, database: 'cost_calculator'},
     migrations: {
       directory: './server/db/migrations'
     }
