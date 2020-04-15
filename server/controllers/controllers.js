@@ -1,6 +1,18 @@
 const model = require('../models/models.js');
+const redis = require('redis');
+const bluebird = require('bluebird');
 
 
+bluebird.promisifyAll(redis.RedisClient.prototype);
+bluebird.promisifyAll(redis.Multi.prototype);
+const PORT = process.env.PORT || 3002;
+
+const REDIS_PORT = process.env.PORT || 6379; 
+const client = redis.createClient(REDIS_PORT);
+
+client.on("error", function(error) {
+    console.error(error);
+  });
 
 
 
@@ -8,15 +20,16 @@ const getZipCode = (req, res) => {
   const zip = req.params.zipcode
   model.getZipCodes(zip)
   .then(results => {
-    res.status(201).json({ creditScore:results })
+    client.setex(`${zip}`, 3600, JSON.stringify(results))
+    res.status(201).json({ locations: results })
   })
   .catch(err => {
     res.status(400).json({
-      message: 'Failed to get Zip!',
+      message: 'Failed to get Zip yo!!!',
       err: err
     })
   })
-}
+};
 
 
 

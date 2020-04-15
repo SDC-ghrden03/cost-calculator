@@ -1,28 +1,71 @@
+// require('newrelic');
+
 //add this require to ensure .env file works
 require('dotenv').config();
-
 const express = require('express');
 const app = express();
 const Routes = require('./routes/routes.js');
 const cors = require('cors');
+const redis = require('redis');
+// const bluebird = require('bluebird');
+
+
+// bluebird.promisifyAll(redis.RedisClient.prototype);
+// bluebird.promisifyAll(redis.Multi.prototype);
+const PORT = process.env.PORT || 3002;
+
+
+const REDIS_PORT = process.env.REDIS_PORT || 6379; 
+// const client = redis.createClient({
+//   host: 'redis'
+//   // port: REDIS_PORT
+// });
+
+const client = redis.createClient('redis://0.0.0.0:6379');
+
+client.on("error", function(error) {
+    console.error(error);
+  });
+
 
 
 //Middleware
 app.use(express.json())
 app.use(cors())
 app.use(express.static('client/dist'))
-//if PORT exists in our enviornment, set PORT to our enviornment for us. else, set it to 3000
-
-
-
-app.use('/api/cars', Routes);
-app.use('/api/location', Routes)
-app.use('/api/crud', Routes)
 
 
 
 
+//cache middleware
+const cache = (req, res, next) => {
 
-const PORT = process.env.PORT || 3002;
+  const zip = req.params.zipcode
+  
+  client.get(`${zip}`, (err, data) => {
+    if (err) throw err; 
+
+    if (data !== null) {
+        res.send(setResponse(zip,data))
+    } else {
+        next();
+    }
+  })
+};
+
+
+// app.use('/api/cars', Routes);
+app.use('/api/location', cache, Routes)
+// app.use('/api/crud', Routes)
+
+
+
+
+
+
 
 app.listen(PORT, ()=>{ console.log(`server running on PORT: ${PORT}`)})
+
+module.exports = { 
+    client
+}

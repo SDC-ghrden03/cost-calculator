@@ -6,6 +6,7 @@
     "@babel/preset-env": "^7.8.3",
     "@babel/preset-react": "^7.8.3",
     "babel-jest": "^25.1.0",
+    "bluebird": "^3.7.2",
     "config": "^3.2.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
@@ -15,11 +16,13 @@
     "mongodb": "^3.5.5",
     "mongoose": "^5.9.7",
     "mysql": "^2.18.1",
+    "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2",
     "pg": "^8.0.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-test-renderer": "^16.12.0",
+    "redis": "^3.0.2",
     "sqlite3": "^4.1.1"
   },
   "devDependencies": {
@@ -46,7 +49,7 @@
   },
   "scripts": {
     "test": "jest",
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack -d",
     "start": "nodemon server/index.js",
     "mongoSeed": "node ./seeds/mongoSeeds.js"
   },
