@@ -20,17 +20,17 @@ const getZipCodes = (zip) => {
 };
 
 
-// const addManyLocations = async (locationsBatch) => {
-//   return new Promise((resolve, reject) => {
-//     eachLocation.collection.insertMany(locationsBatch, (err, docs) => {
-//       if (err) {
-//         reject(err);
-//       } else {
-//         resolve(docs.length)
-//       }
-//     })
-//   })
-// };
+const addManyLocations = async (locationsBatch) => {
+  return new Promise((resolve, reject) => {
+    eachLocation.collection.insertMany(locationsBatch, (err, docs) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(docs.length)
+      }
+    })
+  })
+};
 
 
 // const addOneLocation = (location) => {
@@ -141,6 +141,7 @@ const getZipCodes = (zip) => {
 
 module.exports = {
     getZipCodes,
+    addManyLocations
     // readCarPrice
     // addZipCode,
     // addNewCar   

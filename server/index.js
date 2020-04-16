@@ -6,26 +6,23 @@ const express = require('express');
 const app = express();
 const Routes = require('./routes/routes.js');
 const cors = require('cors');
-const redis = require('redis');
-// const bluebird = require('bluebird');
+const controllers = require('./controllers/controllers.js')
 
 
-// bluebird.promisifyAll(redis.RedisClient.prototype);
-// bluebird.promisifyAll(redis.Multi.prototype);
 const PORT = process.env.PORT || 3002;
 
 
-const REDIS_PORT = process.env.REDIS_PORT || 6379; 
+// const REDIS_PORT = process.env.REDIS_PORT || 6379; 
 // const client = redis.createClient({
-//   host: 'redis'
-//   // port: REDIS_PORT
+//   host: 'redis',
+//   port: REDIS_PORT
 // });
 
-const client = redis.createClient('redis://0.0.0.0:6379');
+// // const client = redis.createClient('redis://0.0.0.0:6379');
 
-client.on("error", function(error) {
-    console.error(error);
-  });
+// client.on("error", function(error) {
+//     console.error(error);
+//   });
 
 
 
@@ -42,7 +39,7 @@ const cache = (req, res, next) => {
 
   const zip = req.params.zipcode
   
-  client.get(`${zip}`, (err, data) => {
+  controllers.client.get(`${zip}`, (err, data) => {
     if (err) throw err; 
 
     if (data !== null) {
@@ -67,5 +64,5 @@ app.use('/api/location', cache, Routes)
 app.listen(PORT, ()=>{ console.log(`server running on PORT: ${PORT}`)})
 
 module.exports = { 
-    client
+  
 }

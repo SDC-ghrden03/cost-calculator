@@ -1,4 +1,4 @@
-const { addManyLocations} = require('../server/connections/costCalculatorConnections.js');
+const { addManyLocations} = require('../server/models/models.js');
 const faker = require('faker');
 
 
