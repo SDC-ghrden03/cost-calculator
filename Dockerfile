@@ -9,6 +9,6 @@ COPY . /src/app
 RUN npm install
 RUN npm run react-dev
 
-EXPOSE 3002
+EXPOSE 80
 
 CMD [ "npm", "start" ]
