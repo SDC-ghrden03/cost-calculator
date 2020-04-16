@@ -2,8 +2,6 @@ version: '3'
 
 services:
 
-  database:
-    image: mongo:latest
 
   redis:
     image: redis:4.0.5-alpine
@@ -13,12 +11,12 @@ services:
   calculator:
     build: ./
     depends_on:
-      - 'database'
       - 'redis'
     links: 
       - redis
     environment: 
-      REDIS_URL: redis
+      REDIS_URL: 'redis://0.0.0.0:6379'
     ports: 
       - '8080:3002'
+ 
     

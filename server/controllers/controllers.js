@@ -1,14 +1,17 @@
 const model = require('../models/models.js');
 const redis = require('redis');
 const bluebird = require('bluebird');
-
+// const client = require('../index.js')
 
 bluebird.promisifyAll(redis.RedisClient.prototype);
 bluebird.promisifyAll(redis.Multi.prototype);
-const PORT = process.env.PORT || 3002;
 
-const REDIS_PORT = process.env.PORT || 6379; 
-const client = redis.createClient(REDIS_PORT);
+
+const REDIS_PORT = process.env.REDIS_PORT || 6379; 
+const client = redis.createClient({
+  host: 'redis',
+  port: REDIS_PORT
+});
 
 client.on("error", function(error) {
     console.error(error);
@@ -104,5 +107,6 @@ module.exports = {
     getCars, 
     addZipCode, 
     updateCars, 
-    deleteCars
+    deleteCars, 
+    client
 }

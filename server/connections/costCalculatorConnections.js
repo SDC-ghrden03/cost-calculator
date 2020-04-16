@@ -1,8 +1,9 @@
 
 const mongoose = require('mongoose');
+const url = 'mongodb://justin:devOps@ec2-3-135-219-124.us-east-2.compute.amazonaws.com:27017/price_information' 
 
 
-mongoose.connect('mongodb://database/price_information', {
+mongoose.connect(url,{
   useNewUrlParser: true,
   useUnifiedTopology: true 
 });
@@ -10,7 +11,7 @@ mongoose.connect('mongodb://database/price_information', {
 
 var db = mongoose.connection; 
 
-db.on('error', console.error.bind(console, 'connectoin error:'));
+db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {
   console.log('we are connected yo!');
 })
