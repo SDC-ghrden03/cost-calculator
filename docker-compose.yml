@@ -14,9 +14,7 @@ services:
       - 'redis'
     links: 
       - redis
-    environment: 
-      REDIS_URL: 'redis://0.0.0.0:6379'
     ports: 
-      - '8080:3002'
+      - '80:3002'
  
     

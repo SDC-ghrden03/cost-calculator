@@ -14,7 +14,7 @@ const client = redis.createClient({
 });
 
 client.on("error", function(error) {
-    console.error(error);
+    console.error('##controller Redis', error);
   });
 
 
