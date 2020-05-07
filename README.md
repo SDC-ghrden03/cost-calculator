@@ -53,7 +53,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Christopher Kwiatkowski** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/christopher-kwiatkowski/)
+* **Christopher Kwiatkowski** - *Initial Front End Work* - [LinkedIn](https://www.linkedin.com/in/christopher-kwiatkowski/)
 * **Justin Hubbell** - *Backend Artichect* - [LinedIn](https://www.linkedin.com/in/justin-hubbell/)
 
 See also the list of [contributors](https://github.com/SDC-ghrden03) who participated in this project.
