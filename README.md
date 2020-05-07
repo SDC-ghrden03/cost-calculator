@@ -4,12 +4,24 @@ Cost calculator web application for an e-commerce site.  Users input their zip c
 
 ### Prerequisites
 
-This applications code is currently set up to connect with a remote database on AWS.  Due to the nature of this assignment, this app is set up to use both postgreSQL and MongoDB DBMS.  There are also separate seeding files for each DBMS.   
-
-This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).  Simply install Docker onto your local machine.  After cloning this repository, open the project in your favorite text editor and navigate to the root directory.  Execute the following commands in the terminal.    
+This applications code is currently set up to connect with a remote database on AWS.  Due to the nature of this assignment, the base code is also set up to use both PostgreSQL and MongoDB DBMS.  There are separate seeding files for each.  Connect to the DBMS of your choice and     
 
 
 ### Installing
+
+```
+Give the example
+```
+
+And repeat
+
+```
+until finished
+```
+
+This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).  Simply install Docker onto your local machine.  After cloning this repository, open the project in your favorite text editor and navigate to the root directory.  Execute the following commands in the terminal. 
+
+End with an example of getting some data out of the system or using it for a little demo
 
 Login to your Docker Hub account with the credentials you created when installing Docker.
 ```
@@ -22,18 +34,6 @@ docker-compose up --build
 ```
 
 Allow the applicaton time to build, you can follow the output in the terminal to track the build's progress.  Once the process has successfully completed, Navigate to http://localhost:80 to see a development version of the app.  
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 
 ## Deployment
