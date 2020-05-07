@@ -6,10 +6,18 @@ Cost calculator web application for an e-commerce site.  Users input their zip c
 
 This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).  Simply install Docker onto your local machine.  After cloning this repository onto your machine, open the project in your favorite text editor and navigate to the root directory.  Execute the following commands into the terminal.    
 
+Login to your Docker Hub account with the credentials you created when installing Docker
 
 ```
-Give examples
+docker login
 ```
+
+From the project root directory
+```
+docker-compose up
+```
+
+Navigate to http://localhost:80 to see a development version of the app.  
 
 ### Installing
 
