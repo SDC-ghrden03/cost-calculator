@@ -1,13 +1,12 @@
 ## Cost Calculator Micro Service
 
-Cost calculator web application for an e-commerce site.  Users input their zip code and basic budget information and recieve a monthly payment calculated on the user inputs.  This was legacy code that I inherited in order to redesign and implement a new backend architechture and database management system. I implemented and compared one relational (PostgreSQL) and non-realtional (MongoDB) DBMS in order to scale the application to be able to handle a throughput of over 1000RPS.  This application has been containerized using [Docker](http://www.docker.com) and deployed via [Amazon Web Services](http://www.aws.com).  
+Cost calculator web application for an e-commerce site.  Users input their zip code and basic budget information and recieve a monthly payment calculated on their inputs.  This was legacy code that I inherited in order to redesign and implement a new backend architechture and database management system. I implemented and compared one relational (PostgreSQL) and non-realtional (MongoDB) DBMS in order to scale the application to handle more than 50 million records with a throughput of over 1000RPS.  This application has been containerized using [Docker](http://www.docker.com) and deployed via [Amazon Web Services](http://www.aws.com).  
 
 ### Prerequisites
 
-This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).  Simply install Docker onto your local machine.  After cloning this repository onto your machine, open the project in your favorite text editor and navigate to the root directory.  Execute the following commands into the terminal.    
+This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).  Simply install Docker onto your local machine.  After cloning this repository onto your machine, open the project in your favorite text editor and navigate to the root directory.  Execute the following commands in the terminal.    
 
 Login to your Docker Hub account with the credentials you created when installing Docker
-
 ```
 docker login
 ```
@@ -17,7 +16,7 @@ From the project root directory
 docker-compose up
 ```
 
-Navigate to http://localhost:80 to see a development version of the app.  
+Allow the applicaton time to build, you can follow the output in the terminal to track the build's progress.  Once the build has successfully completed, Navigate to http://localhost:80 to see a development version of the app.  
 
 ### Installing
 
