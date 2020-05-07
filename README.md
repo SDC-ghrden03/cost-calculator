@@ -44,7 +44,7 @@ Add additional notes about how to deploy this on a live system
 
 * [React](http://www.dropwizard.io/1.0.2/docs/) - The framework used
 * [Docker](https://maven.apache.org/) - Image and container creation for deployment
-* [Redis](https://rometools.github.io/rome/) - Used as in memory cache
+* [Redis](https://rometools.github.io/rome/) - Used as in-memory cache
 
 
 ## Versioning
