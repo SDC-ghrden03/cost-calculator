@@ -4,7 +4,7 @@ Cost calculator web application for an e-commerce site.  Users input their zip c
 
 ### Prerequisites
 
-This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).
+This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).  Simply install Docker onto your local machine.  After cloning this repository onto your machine, open the project in your favorite text editor and navigate to the root directory.  Execute the following commands into the terminal.    
 
 
 ```
