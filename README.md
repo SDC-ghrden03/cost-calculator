@@ -4,25 +4,24 @@ Cost calculator web application for an e-commerce site.  Users input their zip c
 
 ### Prerequisites
 
-This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).  Simply install Docker onto your local machine.  After cloning this repository onto your machine, open the project in your favorite text editor and navigate to the root directory.  Execute the following commands in the terminal.    
+This applications code is currently set up to connect with a remote database on AWS.  Due to the nature of this assignment, this app is set up to use both postgreSQL and MongoDB DBMS.  There are also separate seeding files for each DBMS.   
 
-Login to your Docker Hub account with the credentials you created when installing Docker
+This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).  Simply install Docker onto your local machine.  After cloning this repository, open the project in your favorite text editor and navigate to the root directory.  Execute the following commands in the terminal.    
+
+
+### Installing
+
+Login to your Docker Hub account with the credentials you created when installing Docker.
 ```
 docker login
 ```
 
-From the project root directory
+From the project root directory, the Docker images and containers must also be rebuilt since a new database URI is being implemented in the base code.
 ```
-docker-compose up
+docker-compose up --build
 ```
 
-Allow the applicaton time to build, you can follow the output in the terminal to track the build's progress.  Once the build has successfully completed, Navigate to http://localhost:80 to see a development version of the app.  
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Allow the applicaton time to build, you can follow the output in the terminal to track the build's progress.  Once the process has successfully completed, Navigate to http://localhost:80 to see a development version of the app.  
 
 ```
 Give the example
@@ -36,25 +35,6 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo
 
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
 
 ## Deployment
 
@@ -62,13 +42,10 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [React](http://www.dropwizard.io/1.0.2/docs/) - The framework used
+* [Docker](https://maven.apache.org/) - Image and container creation for deployment
+* [Redis](https://rometools.github.io/rome/) - Used as in memory cache
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Versioning
 
@@ -76,9 +53,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Christopher Kwiatkowski** - *Initial work* - [LinkedIn](https://www.linkedin.com/in/christopher-kwiatkowski/)
+* **Justin Hubbell** - *Backend Artichect* - [LinedIn](https://www.linkedin.com/in/justin-hubbell/)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/SDC-ghrden03) who participated in this project.
 
 ## License
 
@@ -86,6 +64,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Thanks to the Hack Reactor Team for being my army of rubber ducks
+
