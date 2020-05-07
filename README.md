@@ -4,6 +4,7 @@ Cost calculator web application for an e-commerce site.  Users input their zip c
 
 ### Prerequisites
 
+This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).
 
 
 ```
