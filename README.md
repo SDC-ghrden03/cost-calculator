@@ -1,10 +1,10 @@
 ## Cost Calculator Micro Service
 
-Cost calculator web application for an e-commerce site.  Users input their zip code and basic budget information and recieve a monthly payment calculated on the user inputs.  This was legacy code that I inherited in order to redesign and implement a new backend architechture and database management system. I implemented and compared one relational (PostgreSQL) and non-realtional (MongoDB) DBMS in order to scale the application to be able to handle a throughput of over 1000RPS.  This application has been containerized using [Docker](http://www.docker.com) and deployed via Amazon Web Services.  
+Cost calculator web application for an e-commerce site.  Users input their zip code and basic budget information and recieve a monthly payment calculated on the user inputs.  This was legacy code that I inherited in order to redesign and implement a new backend architechture and database management system. I implemented and compared one relational (PostgreSQL) and non-realtional (MongoDB) DBMS in order to scale the application to be able to handle a throughput of over 1000RPS.  This application has been containerized using [Docker](http://www.docker.com) and deployed via [Amazon Web Services](http://www.aws.com).  
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+
 
 ```
 Give examples
