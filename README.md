@@ -4,20 +4,10 @@ Cost calculator web application for an e-commerce site.  Users input their zip c
 
 ### Prerequisites
 
-This applications code is currently set up to connect with a remote database on AWS.  Due to the nature of this assignment, the base code is also set up to use both PostgreSQL and MongoDB DBMS.  There are separate seeding files for each.  Connect to the DBMS of your choice and     
+This applications code is currently set up to connect with a remote database on AWS.  Due to the nature of this assignment, the base code is also set up to use both PostgreSQL and MongoDB DBMS.  There are separate seeding files for each.  Connect to the DBMS of your choice and update the ```connection.js``` file in the ```backend``` directory.  Once you have connected to the database, use the seeding files provided.       
 
 
 ### Installing
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
 
 This application has been containerized using [Docker Compose](https://docs.docker.com/compose/).  Simply install Docker onto your local machine.  After cloning this repository, open the project in your favorite text editor and navigate to the root directory.  Execute the following commands in the terminal. 
 
